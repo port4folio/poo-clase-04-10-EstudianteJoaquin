@@ -15,6 +15,7 @@
 # print(p.getNombre(),"es",p.raza)
 # print(p1.getNombre(),"es",p1.raza)
 
+from clases.Persona import Persona
 personas=[]
 
 def leer_numero():
@@ -39,7 +40,17 @@ def menu():
     op=leer_numero()
     return op
 
+def AgregarPersona():
+    nombre=input("Ingrese nombre: ")
+    rut=input("Ingrese rut: ")
+    persona=Persona(nombre, rut)
+    persona.append(persona)
+
+    
 continuar=True
 while continuar:
     op=menu()
-    print(f"Ingresó la opción: {op}")
+    if op==1:
+      AgregarPersona()
+    elif op==5:
+        imprimirPersona()
