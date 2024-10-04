@@ -4,7 +4,7 @@
 # p.setNombre("Atanasio")
 # print(p.imprimir())
 
-# nombre=input("Ingrese nuevo nombre: ")
+# nombre:Luis
 # p.setNombre(nombre)
 # print(p)
 # Persona.raza="Cybor"
@@ -46,11 +46,56 @@ def AgregarPersona():
     persona=Persona(nombre, rut)
     persona.append(persona)
 
-    
+def ImprimirPersonas():
+    for persona in personas:
+        print("***********")
+        print(persona)
+
+def buscar_persona():
+    rut=input("Ingrese rut a buscar: ")
+    for persona in personas:
+        if persona.getRun()==rut:
+            return persona
+        return None 
+
+def EditarPersona():
+    persona=buscar_persona()
+    if persona!=None:
+        print(f"Su nombre actual es {persona.getNombre()}")
+        nombre=input("Ingrese nuevo nombre.")
+        if nombre=="":
+            print("no se realizon cambios.")
+        persona.setNombre(nombre)
+    else:
+        print("Persona no encontrada")
+def EliminarPersona():
+    persona=buscar_persona()
+    if persona!=None:
+        personas.remove(persona)
+    else:
+        print("Persona no encontrada.")
+
+def ImprimirPersona():
+    persona=buscar_persona()
+    if persona!=None:
+        personas.remove(persona)#el objeto dentro de un print llama al_str_()
+    else:
+        print("Persona no encontrada.")
+
+
 continuar=True
 while continuar:
     op=menu()
     if op==1:
       AgregarPersona()
+    elif op==2:
+      EditarPersona()
+    elif op==3:
+        EliminarPersona()
+    elif op==4:
+     ImprimirPersona()
     elif op==5:
-        imprimirPersona()
+     ImprimirPersonas()
+    elif op==0:
+        print("¡¡Gracias!!")
+        continuar=False
